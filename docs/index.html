@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es" data-demo="true">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fisio Teide · Pide cita online</title>
+  <meta name="description" content="Clínica de fisioterapia en La Laguna. Pide cita online con tu fisio.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/site.css">
+  <script type="module" src="js/booking.js"></script>
+  <script type="module" data-demo-banner src="./js/demo/banner.js" data-where="site" data-site="./" data-panel="./admin/"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top__row">
+      <a class="brand" href="./">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#0F6E66"/><path d="M7 22l6-9 4 5 3-4 5 8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Fisio Teide
+      </a>
+      <nav aria-label="Secciones">
+        <a href="#equipo">Equipo</a>
+        <a href="mi-cita.html">Mi cita</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap intro">
+      <h1>Fisioterapia en La Laguna, sin esperar al teléfono.</h1>
+      <p>Elige tratamiento, fisio y hora. Te mandamos un recordatorio el día antes y puedes cancelar online hasta 12 horas antes.</p>
+    </section>
+
+    <div class="wrap booking" id="pedir-cita">
+      <form class="steps" id="booking" novalidate>
+        <section class="panel" id="step-service">
+          <div class="panel__head"><span class="panel__n">1</span><h2>¿Qué necesitas?</h2></div>
+          <div class="options" id="services" role="radiogroup" aria-label="Tratamiento"><p class="muted">Cargando tratamientos…</p></div>
+        </section>
+
+        <section class="panel" id="step-pro" aria-disabled="true">
+          <div class="panel__head"><span class="panel__n">2</span><h2>¿Con quién?</h2></div>
+          <div class="options options--grid" id="pros" role="radiogroup" aria-label="Fisioterapeuta"></div>
+        </section>
+
+        <section class="panel" id="step-day" aria-disabled="true">
+          <div class="panel__head"><span class="panel__n">3</span><h2>¿Qué día?</h2></div>
+          <div class="days" id="days" role="group" aria-label="Día"></div>
+          <div class="days-nav">
+            <button class="link-btn" type="button" id="days-prev">Días anteriores</button>
+            <button class="link-btn" type="button" id="days-next">Más días</button>
+          </div>
+        </section>
+
+        <section class="panel" id="step-time" aria-disabled="true">
+          <div class="panel__head"><span class="panel__n">4</span><h2>¿A qué hora?</h2></div>
+          <div class="times" id="times" aria-live="polite"><p class="muted">Elige un día para ver las horas libres.</p></div>
+        </section>
+
+        <section class="panel" id="step-details" aria-disabled="true">
+          <div class="panel__head"><span class="panel__n">5</span><h2>Tus datos</h2></div>
+          <div class="field"><label for="name">Nombre y apellidos</label><input id="name" name="name" autocomplete="name" maxlength="80" required></div>
+          <div class="row-2">
+            <div class="field"><label for="phone">Teléfono</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+            <div class="field"><label for="email">Email (para el recordatorio)</label><input id="email" name="email" type="email" autocomplete="email"></div>
+          </div>
+          <div class="field"><label for="reason">Cuéntanos qué te pasa (opcional)</label><textarea id="reason" name="reason" maxlength="500" placeholder="Por ejemplo: dolor en la rodilla al correr desde hace un mes"></textarea></div>
+          <button class="btn btn--primary btn--block" type="submit" id="submit">Confirmar cita</button>
+          <p class="error" id="error" role="alert" hidden></p>
+        </section>
+      </form>
+
+      <aside class="panel summary-card" aria-labelledby="summary-title">
+        <div id="summary">
+          <h2 id="summary-title">Tu cita</h2>
+          <dl class="summary-list">
+            <div><dt>Tratamiento</dt><dd id="s-service" class="empty">Sin elegir</dd></div>
+            <div><dt>Fisio</dt><dd id="s-pro" class="empty">Sin elegir</dd></div>
+            <div><dt>Cuándo</dt><dd id="s-when" class="empty">Sin elegir</dd></div>
+          </dl>
+          <div class="summary-total"><span>Precio</span><span id="s-price">–</span></div>
+        </div>
+        <div class="done" id="done" hidden>
+          <h2>Cita confirmada</h2>
+          <p id="done-text"></p>
+          <p class="code-box"><span>Tu código</span><strong id="done-code"></strong></p>
+          <p>Con el código y tu teléfono puedes ver o cancelar la cita en <a href="mi-cita.html">Mi cita</a>.</p>
+        </div>
+      </aside>
+    </div>
+
+    <section class="team" id="equipo">
+      <div class="wrap">
+        <h2>El equipo</h2>
+        <ul class="team__list" id="team"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">Proyecto de demostración: Fisio Teide es una clínica ficticia. Las citas no son reales.</footer>
+</body>
+</html>

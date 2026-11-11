@@ -20,6 +20,17 @@ solos 24 horas antes.
 - Fichas de paciente: historial de citas, sesiones atendidas, ausencias y notas clínicas.
 - Crear citas que llegan por teléfono.
 
+## Demo online
+
+**[https://ikermarting.github.io/citas-fisioterapia/](https://ikermarting.github.io/citas-fisioterapia/)** · Panel: [https://ikermarting.github.io/citas-fisioterapia/admin/](https://ikermarting.github.io/citas-fisioterapia/admin/) (contraseña `demo`)
+
+La demo funciona sin servidor: `npm run build:demo` genera la carpeta `docs/` con la web y el panel,
+y un backend simulado en el navegador (`demo/server.js`) que responde a las mismas rutas que la API
+real con la **misma lógica** de `src/lib/`. Los datos son de ejemplo y se guardan solo en el navegador
+de quien la visita; la franja superior permite restablecerlos.
+
+Después de cambiar algo en `public/` o `src/lib/`, vuelve a ejecutar `npm run build:demo` y sube `docs/`.
+
 ## Decisiones técnicas
 
 ### Reserva atómica sin transacciones
@@ -66,6 +77,8 @@ src/
   models/index.js      Professional, Service, Patient, Appointment, AgendaDay
   services/            Citas (reservar, cancelar), recordatorios y avisos
   routes/              API pública y API del panel
+demo/                  Backend simulado para la demo de GitHub Pages
+docs/                  Demo estática generada (npm run build:demo)
 public/                Web de la clínica, "Mi cita" y panel /admin
 scripts/seed.js        Fisios, tratamientos, pacientes y un mes de citas de ejemplo
 test/                  Tests con node:test

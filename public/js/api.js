@@ -1,5 +1,16 @@
 // Pequeño cliente de la API: lanza un Error con el mensaje del servidor si algo va mal.
+//
+// En la demo de GitHub Pages (<html data-demo="true">, la genera `npm run build:demo`) no hay
+// servidor: las peticiones las responde un backend simulado en el navegador (js/demo/server.js).
+const isDemo = document.documentElement.dataset.demo === "true";
+let demoServer = null;
+
 export async function api(path, { method = "GET", body, token } = {}) {
+  if (isDemo) {
+    demoServer ??= import(new URL("./demo/server.js", import.meta.url));
+    return (await demoServer).handle(path, { method, body, token });
+  }
+
   const headers = {};
   if (body !== undefined) headers["Content-Type"] = "application/json";
   if (token) headers.Authorization = `Bearer ${token}`;

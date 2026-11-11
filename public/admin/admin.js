@@ -1,4 +1,4 @@
-import { addDays, api, formatDate, todayIn } from "/js/api.js";
+import { addDays, api, formatDate, todayIn } from "../js/api.js";
 
 const $ = (sel) => document.querySelector(sel);
 const el = (tag, props = {}, ...children) => {
